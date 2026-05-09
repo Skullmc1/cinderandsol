@@ -2,7 +2,7 @@
 
 import { useToonGradientMap } from "@/lib/three-utils";
 import { WindingRoad } from "./hero/WindingRoad";
-import { ThematicCastle } from "./hero/ThematicCastle";
+import { VaultBunker } from "./hero/VaultBunker";
 import { DeadTree } from "./hero/DeadTree";
 import { Tumbleweed } from "./hero/Tumbleweed";
 
@@ -17,8 +17,7 @@ export const HeroGround = () => {
       </mesh>
 
       <WindingRoad gradientMap={gradientMap} />
-      <ThematicCastle gradientMap={gradientMap} />
-
+      <VaultBunker gradientMap={gradientMap} />
       {/*
           ORGANIC DENSE FOREST
           Using new Limb-recursive trees with roots.

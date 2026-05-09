@@ -10,18 +10,18 @@ export const WindingRoad = ({
   gradientMap: THREE.Texture;
 }) => {
   const curve = useMemo(() => {
-    // Castle is at [6, -0.5, -18] with rotation [0, -Math.PI / 6, 0]
-    // Gate is at [0, 0, 1.5] in local space.
-    // Calculated world entrance: [5.25, 0, -16.7]
+    // Vault Bunker is at [6, -0.5, -18] with rotation [0, -Math.PI / 6, 0]
+    // Blast Door is at [0, 0, 3.5] in local space.
+    // Center is at [6, 0, -18] in world space.
     return new THREE.CatmullRomCurve3([
       new THREE.Vector3(0, 0, 15),
       new THREE.Vector3(-6, 0, 5),
-      new THREE.Vector3(6, 0, -2),
-      new THREE.Vector3(4.25, 0, -14.5), // Alignment approach point
-      new THREE.Vector3(5.25, 0, -16.7), // Entrance point
+      new THREE.Vector3(4, 0, -5),
+      new THREE.Vector3(3.25, 0, -13.25), // Alignment approach point
+      new THREE.Vector3(4.25, 0, -15), // Entrance point (Blast Door)
+      new THREE.Vector3(6, 0, -18), // Inside the bunker
     ]);
   }, []);
-
   // Create a tapered road geometry manually
   const roadGeometry = useMemo(() => {
     const segments = 100;
