@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    --background: #4a2c0f; /* Deep earthy brown */
+    --foreground: #f0f0f0; /* Off-white for text */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    font-family:
+        var(--font-poppins),
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif; /* Professional Poppins for body */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Utility class for Poppins */
+.font-poppins {
+    font-family:
+        var(--font-poppins),
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+}
+
+/* Utility class for Cinzel Decorative (uses the Next font variable) */
+.font-cinzel-decorative {
+    font-family: var(--font-cinzel-decorative), serif;
+}
+
+/* Apply Cinzel Decorative to all headings by default */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-cinzel-decorative), serif;
+}
+
+* {
+    box-sizing: border-box;
 }
