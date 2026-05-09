@@ -13,15 +13,6 @@ export const Experience = ({ section }: { section: number }) => {
       {/* Warm ambient light */}
       <ambientLight intensity={0.7} color="#d4a373" />{" "}
       {/* Earthy orange/brown */}
-      {/* Main sun-like directional light */}
-      <directionalLight
-        position={[10, 20, 10]}
-        intensity={2.5}
-        castShadow
-        shadow-mapSize={[2048, 2048]}
-        color="#fff8dc"
-      />{" "}
-      {/* Creamy white */}
       {/* Secondary fill light for warmth and depth */}
       <directionalLight
         position={[-10, -10, -10]}

@@ -60,19 +60,29 @@ export const Sun = ({ section }: { section: number }) => {
 
   return (
     <group ref={groupRef} position={[3, 1.8, -3]}>
-      <mesh ref={meshRef} castShadow>
+      <mesh ref={meshRef}>
         <icosahedronGeometry args={[1, 16]} />
         <meshToonMaterial color="#ffb700" gradientMap={gradientMap} />
         <Outlines thickness={0.4} color="#000000" />
       </mesh>
 
-      <ambientLight intensity={0.6} color="#4a1500" />
-      <directionalLight position={[4, 5, 3]} intensity={5} color="#ffffff" />
+      {/* Main Shadow-Casting Light (Follows the Sun) */}
       <directionalLight
-        position={[-4, -3, -4]}
+        castShadow
         intensity={2.5}
-        color="#ff0033"
+        shadow-mapSize={[2048, 2048]}
+        shadow-camera-left={-60}
+        shadow-camera-right={60}
+        shadow-camera-top={60}
+        shadow-camera-bottom={-60}
+        shadow-camera-near={0.1}
+        shadow-camera-far={200}
+        color="#fff8dc"
       />
+
+      <ambientLight intensity={0.4} color="#4a1500" />
+      <directionalLight position={[4, 5, 3]} intensity={2} color="#ffffff" />
+      <directionalLight position={[-4, -3, -4]} intensity={1} color="#ff0033" />
     </group>
   );
 };
