@@ -63,8 +63,8 @@ export const DeadTree = ({
   variant = "gnarled",
   gradientMap,
 }: DeadTreeProps) => {
-  const mainColor = "#3a200a";
-  const rootColor = "#2a1a0a";
+  const mainColor = "#8d5b4a"; // Lighter brown
+  const rootColor = "#6f452a"; // Medium brown (replaces dark)
 
   return (
     <group position={position} rotation={rotation} scale={scale}>

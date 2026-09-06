@@ -1,33 +1,52 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useToonGradientMap } from "@/lib/three-utils";
+import { TacticalPillar } from "./play/TacticalPillar";
 import * as THREE from "three";
-import { ThematicMesh, useToonGradientMap } from "@/lib/three-utils";
-import { Outlines } from "@react-three/drei";
-
-const TOON_OUTLINE_COLOR = "#000000"; // Assuming the sun's outline is black
-const TOON_OUTLINE_THICKNESS = 0.25; // Re-using from sun for consistency
 
 export const PlayGround = () => {
   const gradientMap = useToonGradientMap();
+
   return (
     <>
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[400, 400]} />
-        <meshToonMaterial color="#cc7722" gradientMap={gradientMap} />{" "}
-        {/* Burnt Sienna */}
+        <meshToonMaterial color="#d4a373" gradientMap={gradientMap} />
       </mesh>
-      <group position={[0, 1, -10]}>
-        <mesh castShadow>
-          <torusGeometry args={[4, 0.6, 32, 100]} />
-          <meshToonMaterial
-            color="#ffd700"
-            emissive="#ffc125"
-            emissiveIntensity={0.5}
-            gradientMap={gradientMap}
-          />{" "}
-          {/* Gold */}
-          <Outlines thickness={0.3} color={TOON_OUTLINE_COLOR} />
+
+      {/* Tactical Ritual Circle */}
+      <group position={[0, 0, -4]}>
+        {[0, 1, 2, 3, 4, 5].map((i) => {
+          const angle = (i / 6) * Math.PI * 2;
+          const radius = 5;
+          return (
+            <TacticalPillar
+              key={i}
+              position={[Math.cos(angle) * radius, 0, Math.sin(angle) * radius]}
+              height={2 + Math.random() * 2}
+              active={i % 2 === 0}
+              gradientMap={gradientMap}
+            />
+          );
+        })}
+
+        {/* Central Tactical Node */}
+        <mesh position={[0, 0.1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[0, 3, 32]} />
+          <meshBasicMaterial
+            color="#ff9900"
+            transparent
+            opacity={0.1}
+            side={THREE.DoubleSide}
+          />
+        </mesh>
+      </group>
+
+      {/* Distant Watchtower Silhouette */}
+      <group position={[15, 0, -15]}>
+        <mesh position={[0, 5, 0]}>
+          <boxGeometry args={[2, 10, 2]} />
+          <meshToonMaterial color="#8d5b4a" gradientMap={gradientMap} />
         </mesh>
       </group>
     </>

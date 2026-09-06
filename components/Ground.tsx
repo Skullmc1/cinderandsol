@@ -23,7 +23,7 @@ const SectionContainer = ({ children, page, currentSection }: any) => {
 
     // Layering logic: each section sits at a unique Z depth based on its index
     // Hero (0) is front, Footer (4) is back.
-    const baseZ = page * -20;
+    const baseZ = page * -10;
     const targetZ = isVisible ? baseZ : isPast ? baseZ + 40 : baseZ - 20;
     const targetY = isVisible ? -0.8 : isFuture ? -1.5 : -10;
     const targetScale = isVisible ? 1 : 0.5;

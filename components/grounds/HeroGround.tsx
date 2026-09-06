@@ -13,7 +13,7 @@ export const HeroGround = () => {
     <>
       <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[400, 400]} />
-        <meshToonMaterial color="#8d5b4a" gradientMap={gradientMap} />
+        <meshToonMaterial color="#d4a373" gradientMap={gradientMap} />
       </mesh>
 
       <WindingRoad gradientMap={gradientMap} />
